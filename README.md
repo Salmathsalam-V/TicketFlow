@@ -1,5 +1,4 @@
-# TicketFlow Backend
-# Ticket Management System
+# TicketFlow - Ticket Management System
 
 A full-stack Ticket Management System built using Django REST Framework and React.
 
