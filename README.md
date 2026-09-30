@@ -63,13 +63,13 @@ TicketFlow/
 
 ### Prerequisites
 - Python
-- Node.js and npm
+-  npm
 - Git
 
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/Salmathsalam-V/TicketFlow.git
 cd TicketFlow
 ```
 
@@ -184,8 +184,9 @@ The frontend will usually run at `http://localhost:5173/`.
 
 ## Screenshots
 
-Add screenshots of the application here, for example:
 - Landing page
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/584c65b2-9815-48ea-a745-0176afcffb1b" />
+
 - Login page
 - Registration page
 - User dashboard
