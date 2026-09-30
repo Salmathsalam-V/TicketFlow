@@ -185,14 +185,25 @@ The frontend will usually run at `http://localhost:5173/`.
 ## Screenshots
 
 - Landing page
-  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/584c65b2-9815-48ea-a745-0176afcffb1b" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/57986180-ef77-4866-ada4-78c6e158db59" />
 
 - Login page
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/87e100ba-8503-4f29-bef8-6b647cf0ea71" />
+
 - Registration page
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6e462bcf-94d3-483d-906e-e35c919a581d" />
+
 - User dashboard
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f604a69b-7b28-4668-b795-3de130c963a0" />
+
 - Ticket details
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/242ba24f-3ace-4a6e-b89b-7ca7042c219d" />
+
 - Admin dashboard
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0e6f4bb9-544a-4982-94c0-04d27d168437" />
+
 - Profile page
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/865f02dc-2773-47ef-a40e-741341f68882" />
 
 ## Future Improvements
 
@@ -203,7 +214,9 @@ The frontend will usually run at `http://localhost:5173/`.
 - Deployment to a production environment
 
 ## Author
+Salmath Salam V
+GitHub: [YOU](https://github.com/Salmathsalam-V)
 
-**Your Name**
 
-GitHub: YOUR_GITHUB_PROFILE_URL
+
+R_GITHUB_PROFILE_URL
