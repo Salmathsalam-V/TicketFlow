@@ -9,6 +9,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from django.contrib.auth import update_session_auth_hash
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -127,3 +128,48 @@ def register_view(request):
         {'message': 'Registration successful. You can now log in.'},
         status=status.HTTP_201_CREATED
     )
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def change_password(request):
+    user = request.user
+
+    current_password = request.data.get('current_password', '')
+    new_password = request.data.get('new_password', '')
+    confirm_password = request.data.get('confirm_password', '')
+
+    if not current_password or not new_password or not confirm_password:
+        return Response(
+            {'detail': 'All fields are required.'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    if not user.check_password(current_password):
+        return Response(
+            {'detail': 'Current password is incorrect.'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    if new_password != confirm_password:
+        return Response(
+            {'detail': 'New passwords do not match.'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    try:
+        validate_password(new_password, user=user)
+    except ValidationError as error:
+        return Response(
+            {'detail': list(error.messages)},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    user.set_password(new_password)
+    user.save()
+
+    # Keep the user logged in after changing their password.
+    update_session_auth_hash(request, user)
+
+    return Response({
+        'message': 'Password changed successfully.'
+    })
