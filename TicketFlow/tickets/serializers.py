@@ -7,7 +7,6 @@ class TicketSerializer(serializers.ModelSerializer):
         source='user.username',
         read_only=True
     )
-
     assigned_to_username = serializers.CharField(
         source='assigned_to.username',
         read_only=True
@@ -28,7 +27,6 @@ class TicketSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
-
         read_only_fields = [
             'id',
             'user',
@@ -38,12 +36,20 @@ class TicketSerializer(serializers.ModelSerializer):
             'assigned_to_username',
         ]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        request = self.context.get('request')
+
+        if request and not request.user.is_staff:
+            self.fields['status'].read_only = True
+            self.fields['assigned_to'].read_only = True
+
     def validate_title(self, value):
         if not value.strip():
             raise serializers.ValidationError(
                 'Title cannot be empty.'
             )
-
         return value
 
     def validate_description(self, value):
@@ -51,5 +57,4 @@ class TicketSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Description cannot be empty.'
             )
-
         return value
