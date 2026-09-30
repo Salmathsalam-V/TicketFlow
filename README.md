@@ -216,7 +216,3 @@ The frontend will usually run at `http://localhost:5173/`.
 ## Author
 Salmath Salam V
 GitHub: [YOU](https://github.com/Salmathsalam-V)
-
-
-
-R_GITHUB_PROFILE_URL
