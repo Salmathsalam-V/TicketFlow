@@ -1,0 +1,23 @@
+:root {
+  --primary-yellow: #facc15;
+  --golden-yellow: #eab308;
+  --dark-black: #121212;
+  --charcoal: #27272a;
+  --page-background: #f8fafc;
+  --text-secondary: #64748b;
+}
+
+body {
+  background-color: var(--page-background);
+  color: var(--dark-black);
+}
+
+.dashboard-content {
+  padding: 32px 0;
+}
+
+@media (max-width: 600px) {
+  .dashboard-content {
+    padding: 16px 0;
+  }
+}
