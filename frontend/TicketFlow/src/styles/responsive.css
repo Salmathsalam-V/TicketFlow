@@ -1,0 +1,48 @@
+/* Common styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f8fafc;
+}
+
+/* Dashboard */
+.dashboard-content {
+  padding: 32px 0;
+}
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Tablet */
+@media screen and (max-width: 900px) {
+  .dashboard-content {
+    padding: 24px 0;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+  .dashboard-content {
+    padding: 16px 0;
+  }
+
+  .dashboard-header {
+    gap: 6px;
+  }
+
+  .dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .dashboard-actions button {
+    flex: 1;
+  }
+}
