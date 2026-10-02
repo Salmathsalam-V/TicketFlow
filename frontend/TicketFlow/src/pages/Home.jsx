@@ -22,7 +22,6 @@ function Home() {
 
   const handleLogout = async () => {
     try {
-      const csrfResponse = await API.get('users/csrf/');
       const csrfToken = await getCsrfToken();
       await API.post(
           'users/logout/',
