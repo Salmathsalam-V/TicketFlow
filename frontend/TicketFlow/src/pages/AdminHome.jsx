@@ -19,7 +19,7 @@ function AdminHome() {
   const handleLogout = async () => {
     try {
       
-      const csrfToken = csrfResponse.data.csrfToken;
+      const csrfToken = await getCsrfToken();
       await API.post(
         'users/logout/',
         {},
