@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import TicketList from '../components/TicketList';
 import TicketForm from '../components/TicketForm';
+import API, { getCsrfToken } from '../api/axios';
 
 function Home() {
   const navigate = useNavigate();
@@ -23,8 +24,7 @@ function Home() {
   const handleLogout = async () => {
     try {
       const csrfResponse = await API.get('users/csrf/');
-      const csrfToken = csrfResponse.data.csrfToken;
-
+      const csrfToken = await getCsrfToken();
       await API.post(
           'users/logout/',
           {},
