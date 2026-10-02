@@ -39,7 +39,7 @@ function TicketForm({ open, onClose, onCreated }) {
 
     try {
       setLoading(true);
-
+      const csrfToken = await getCsrfToken();
       await API.post('tickets/', {
         title: form.title.trim(),
         description: form.description.trim(),
