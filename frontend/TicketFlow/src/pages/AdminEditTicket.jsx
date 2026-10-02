@@ -125,7 +125,7 @@ const handleDelete = async () => {
   try {
     setDeleting(true);
     setError('');
-
+    const csrfToken = await getCsrfToken();
     await API.delete(`tickets/${id}/`, {
       headers: {
         'X-CSRFToken': csrfToken,
