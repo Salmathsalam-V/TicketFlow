@@ -21,7 +21,7 @@ import {
   TextField,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import API from '../api/axios';
+import API, { getCsrfToken } from '../api/axios';
 
 function Profile() {
   const navigate = useNavigate();
@@ -70,9 +70,15 @@ const handleChangePassword = async (e) => {
   setChangingPassword(true);
 
   try {
+    const csrfToken = await getCsrfToken();
     const response = await API.post(
       'users/change-password/',
-      passwordData
+      passwordData,
+       {
+        headers: {
+          'X-CSRFToken': csrfToken,
+        },
+      }
     );
 
     setPasswordSuccess(response.data.message);
