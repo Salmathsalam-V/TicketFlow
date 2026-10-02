@@ -10,7 +10,7 @@ import {
   Paper,
   Alert,
 } from '@mui/material';
-
+import API, { getCsrfToken } from '../api/axios';
 
 function Login() {
 
@@ -33,10 +33,17 @@ function Login() {
     try {
 
       
-        const response = await API.post('users/login/', {
-        username: username,
-        password: password,
-        });
+    const csrfToken = await getCsrfToken();
+
+    const response = await API.post(
+      'users/login/',
+      { username, password },
+      {
+        headers: {
+          'X-CSRFToken': csrfToken,
+        },
+      }
+    );
 
 
       const user = response.data.user;
