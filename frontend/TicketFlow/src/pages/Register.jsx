@@ -11,7 +11,7 @@ import {
   Stack,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import API from '../api/axios';
+import API, { getCsrfToken } from '../api/axios';
 
 function Register() {
   const navigate = useNavigate();
@@ -47,7 +47,16 @@ function Register() {
     setLoading(true);
 
     try {
-      const response = await API.post('users/register/', form);
+      const csrfToken = await getCsrfToken();
+      const response = await API.post(
+        'users/register/',
+        form,
+        {
+          headers: {
+            'X-CSRFToken': csrfToken,
+          },
+        }
+      );
       setSuccess(response.data.message);
       setTimeout(() => navigate('/login'), 1500);
     } catch (err) {
