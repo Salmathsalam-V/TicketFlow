@@ -9,7 +9,7 @@ import {
   MenuItem,
   Alert,
 } from '@mui/material';
-import API from '../api/axios';
+import API, { getCsrfToken } from '../api/axios';
 
 function TicketForm({ open, onClose, onCreated }) {
   const [form, setForm] = useState({
@@ -44,7 +44,12 @@ function TicketForm({ open, onClose, onCreated }) {
         title: form.title.trim(),
         description: form.description.trim(),
         priority: form.priority,
-      });
+      },{
+        headers: {
+          'X-CSRFToken': csrfToken,
+        },
+      }
+      );
 
       setForm({
         title: '',
