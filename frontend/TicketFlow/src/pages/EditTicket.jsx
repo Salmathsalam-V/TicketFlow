@@ -12,7 +12,7 @@ import {
   Alert,
 } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-import API from '../api/axios';
+import API, { getCsrfToken } from '../api/axios';
 
 function EditTicket() {
   const { id } = useParams();
@@ -71,12 +71,17 @@ function EditTicket() {
 
     try {
       setSaving(true);
-
+     const csrfToken = await getCsrfToken();
       await API.put(`tickets/${id}/`, {
         title: form.title.trim(),
         description: form.description.trim(),
         priority: form.priority,
-      });
+      },{
+        headers: {
+          'X-CSRFToken': csrfToken,
+        },
+      }
+    );
 
       navigate(`/tickets/${id}`);
     } catch (err) {
