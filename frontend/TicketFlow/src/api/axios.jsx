@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 const API = axios.create({
@@ -5,22 +6,12 @@ const API = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, 
+  withCredentials: true,
 });
 
-// Read the CSRF token from the browser cookie and set it in the headers for all requests
-API.interceptors.request.use((config) => {
-  const csrfToken = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('csrftoken='))
-    ?.split('=')[1];
-
-  if (csrfToken) {
-    config.headers['X-CSRFToken'] = decodeURIComponent(csrfToken);
-  }
-
-  return config;
-});
-
+export const getCsrfToken = async () => {
+  const response = await API.get('users/csrf/');
+  return response.data.csrfToken;
+};
 
 export default API;
