@@ -126,7 +126,11 @@ const handleDelete = async () => {
     setDeleting(true);
     setError('');
 
-    await API.delete(`tickets/${id}/`);
+    await API.delete(`tickets/${id}/`, {
+      headers: {
+        'X-CSRFToken': csrfToken,
+      },
+    });
 
     navigate('/admin', { replace: true });
   } catch (err) {
