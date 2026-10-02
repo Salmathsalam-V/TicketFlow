@@ -9,7 +9,7 @@ import {
   Stack,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import API from '../api/axios';
+import API, { getCsrfToken } from '../api/axios';
 import TicketList from '../components/TicketList';
 
 
